@@ -20,29 +20,14 @@
 		"LICENSE",
 		"package.json"
 	],
-	"scripts": {
-		"postinstall": "node install",
-		"eslint": "eslint .",
-		"test": "node --test --watch",
-		"test-ci": "node --test"
-	},
+	"scripts": {},
 	"engines": {
-		"node": ">=22.9.0",
-		"npm": ">=10.8.3"
+		"node": ">=12.13.0",
+		"npm": ">=6.12.0"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/node-3d/deps-qmlui-raub.git"
+		"url": "https://github.com/node-3d/qml-fontawesome-raub.git"
 	},
-	"dependencies": {
-		"addon-tools-raub": "^9.0.0",
-		"deps-qt-qml-raub": "^4.0.0"
-	},
-	"devDependencies": {
-		"@types/node": "^22.7.9",
-		"@eslint/js": "^9.13.0",
-		"eslint": "^9.13.0",
-		"node-addon-api": "^8.2.1",
-		"typescript": "^5.6.3"
-	}
+	"dependencies": {}
 }
