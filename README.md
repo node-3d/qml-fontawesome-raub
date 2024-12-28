@@ -45,7 +45,7 @@ FontAwesome.icons: { [name]: string } // icon name -> unicode character
 FontAwesome.list: string[] // list of all icon names, same as `Object.keys(FontAwesome.icons)`
 FontAwesome.listUnique: string[] // list of unique icon names, excluding aliases
 FontAwesome.getFamily: (name) => string // one of Font Awesome font names
-FontAwesome.getWeight: (name) => number // 400 or 900 (Font.Normal or Fonnt.Black)
+FontAwesome.getWeight: (name) => number // 400 or 900 (`Font.Normal` or `Font.Black`)
 FontAwesome.getText: (name) => string // icon unicode, sane as `FontAwesome.icons[name]`
 ```
 
@@ -91,13 +91,13 @@ import FontAwesome
 ### C++ import path
 
 ```cpp
-qmlEngine->addImportPath("path to qml-fontawesome-raub")
+qmlEngine->addImportPath("path to qml-fontawesome-raub");
 ```
 
 ### Node.js qml-raub
 
 ```js
-View.libs(require.resolve('qml-fontawesome-raub'))
+View.libs(require('qml-fontawesome-raub').absPath);
 ```
 
 ### Manual

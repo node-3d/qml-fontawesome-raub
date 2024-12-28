@@ -8,7 +8,7 @@ Rectangle {
 	color: 'black'
 	
 	Component.onCompleted: {
-		FontAwesome6.list.forEach(name => {
+		FontAwesome.list.forEach(name => {
 			iconList.append({ name });
 		});
 	}
@@ -45,7 +45,7 @@ Rectangle {
 					color: 'black'
 					onTextChanged: {
 						iconList.clear();
-						FontAwesome6.list.filter(x => x.includes(text)).forEach(name => {
+						FontAwesome.list.filter(x => x.includes(text)).forEach(name => {
 							iconList.append({ name });
 						});
 					}

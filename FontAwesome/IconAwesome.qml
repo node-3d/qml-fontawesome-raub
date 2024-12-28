@@ -48,9 +48,9 @@ Item {
 			return;
 		}
 		
-		const family = FontAwesome6.getFamily(name);
-		const weight = FontAwesome6.getWeight(name);
-		const text = FontAwesome6.getText(name);
+		const family = FontAwesome.getFamily(name);
+		const weight = FontAwesome.getWeight(name);
+		const text = FontAwesome.getText(name);
 		
 		if (!family || !text) {
 			console.log("No family or text for", "'" + name + "'", !!family, !!text);
