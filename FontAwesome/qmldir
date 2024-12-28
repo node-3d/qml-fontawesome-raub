@@ -1,0 +1,9 @@
+module FontAwesome
+
+import QtQuick
+import QtQml.Models
+
+singleton FontAwesome 1.0 FontAwesome.qml
+
+IconAwesome 1.0 IconAwesome.qml
+IconAwesomeHelper 1.0 IconAwesomeHelper.qml
