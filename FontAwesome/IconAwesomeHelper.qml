@@ -1,5 +1,5 @@
-import IconAwesome
-
+import QtQuick.Layouts
+import QtQuick.Controls
 
 Rectangle {
 	id: _awesomeHelper

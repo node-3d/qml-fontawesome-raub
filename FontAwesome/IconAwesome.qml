@@ -31,7 +31,7 @@ Item {
 	onStyleColorChanged: _patch("styleColor", styleColor)
 	onStyleChanged: _patch("style", style)
 	
-	// Changing `name`` will spawn a new `Text`` for the new icon.
+	// Changing `name` will spawn a new `Text` for the new icon.
 	// This prevents unhandled font exceptions.
 	onNameChanged: {
 		let isFound = false;
@@ -52,8 +52,8 @@ Item {
 		const weight = FontAwesome.getWeight(name);
 		const text = FontAwesome.getText(name);
 		
-		if (!family || !text) {
-			console.log("No family or text for", "'" + name + "'", !!family, !!text);
+		if (!text) {
+			console.log("FontAwesome icon missing:", "'" + name + "'");
 			return;
 		}
 		
