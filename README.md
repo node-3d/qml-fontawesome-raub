@@ -8,6 +8,8 @@ This is a part of [Node3D](https://github.com/node-3d) project.
 npm i -s qml-fontawesome-raub
 ```
 
+![Example](examples/screenshot.png)
+
 Provides **FontAwesome 6+** icons and helpers for QML. It is possible but not obligatory
 to use this repo as NPM module.
 
