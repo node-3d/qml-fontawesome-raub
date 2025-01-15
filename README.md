@@ -46,6 +46,11 @@ fonts and provides low-level interface:
 FontAwesome.icons: { [name]: string } // icon name -> unicode character
 FontAwesome.list: string[] // list of all icon names, same as `Object.keys(FontAwesome.icons)`
 FontAwesome.listUnique: string[] // list of unique icon names, excluding aliases
+FontAwesome.fonts: { // auxilary font descriptions
+	regular: { family: string, weight: number },
+	solid: { family: string, weight: number },
+	brands: { family: string, weight: number },
+}
 FontAwesome.getFamily: (name) => string // one of Font Awesome font names
 FontAwesome.getWeight: (name) => number // 400 or 900 (`Font.Normal` or `Font.Black`)
 FontAwesome.getText: (name) => string // icon unicode, sane as `FontAwesome.icons[name]`
