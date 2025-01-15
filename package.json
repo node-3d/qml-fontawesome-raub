@@ -1,7 +1,7 @@
 {
 	"author": "Luis Blanco <luisblanco1337@gmail.com>",
 	"name": "qml-fontawesome-raub",
-	"version": "0.0.2",
+	"version": "0.1.0",
 	"description": "FontAwesome 6+ icons for QML",
 	"license": "MIT",
 	"main": "index.js",

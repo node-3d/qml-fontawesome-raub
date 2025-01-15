@@ -9,6 +9,8 @@ import FontAwesome
  */
  
 Item {
+	id: _root
+	
 	property var name: ""
 	property int size: 18
 	property color color: "white"
@@ -18,65 +20,59 @@ Item {
 	width: size
 	height: size
 	
-	function _patch(key, value) {
-		for (let i = 0; i < _mdl.count; i++) {
-			const item = _mdl.get(i);
-			item[key] = value;
-		}
-	}
+	property int _pointSize: Math.ceil(_root.size * 0.75)
 	
-	// Font independent props are patched in-place.
-	onSizeChanged: _patch("size", size)
-	onColorChanged: _patch("color", color)
-	onStyleColorChanged: _patch("styleColor", styleColor)
-	onStyleChanged: _patch("style", style)
-	
-	// Changing `name` will spawn a new `Text` for the new icon.
-	// This prevents unhandled font exceptions.
-	onNameChanged: {
-		let isFound = false;
-		for (let i = 0; i < _mdl.count; i++) {
-			const item = _mdl.get(i);
-			item.visible = item.name === name;
-			
-			if (item.visible) {
-				isFound = true;
+	Text {
+		id: _regular
+		anchors.centerIn: parent
+		font.pointSize: _root._pointSize
+		visible: FontAwesome.getFamily(_root.name) === FontAwesome.fonts.regular.family
+		font.family: FontAwesome.fonts.regular.family
+		font.weight: FontAwesome.fonts.regular.weight
+		text: {
+			if (FontAwesome.getFamily(_root.name) !== FontAwesome.fonts.regular.family) {
+				return "";
 			}
+			return FontAwesome.getText(name);
 		}
-		
-		if (isFound || !name) {
-			return;
-		}
-		
-		const family = FontAwesome.getFamily(name);
-		const weight = FontAwesome.getWeight(name);
-		const text = FontAwesome.getText(name);
-		
-		if (!text) {
-			console.log("FontAwesome icon missing:", "'" + name + "'");
-			return;
-		}
-		
-		_mdl.append({
-			visible: true,
-			name: name,
-			family, weight, text,
-			color, styleColor, style,
-		});
+		color: _root.color
+		styleColor: _root.styleColor
+		style: _root.style
 	}
 	
-	Repeater {
-		model: ListModel { id: _mdl }
-		delegate: Text {
-			anchors.centerIn: parent
-			font.pointSize: Math.ceil(size * 0.75)
-			visible: model.visible
-			font.family: model.family
-			font.weight: model.weight
-			text: model.text
-			color: model.color
-			styleColor: model.styleColor
-			style: model.style
+	Text {
+		id: _solid
+		anchors.centerIn: parent
+		font.pointSize: _root._pointSize
+		visible: FontAwesome.getFamily(_root.name) === FontAwesome.fonts.solid.family
+		font.family: FontAwesome.fonts.solid.family
+		font.weight: FontAwesome.fonts.solid.weight
+		text: {
+			if (FontAwesome.getFamily(_root.name) !== FontAwesome.fonts.solid.family) {
+				return "";
+			}
+			return FontAwesome.getText(name);
 		}
+		color: _root.color
+		styleColor: _root.styleColor
+		style: _root.style
+	}
+	
+	Text {
+		id: _brands
+		anchors.centerIn: parent
+		font.pointSize: _root._pointSize
+		visible: FontAwesome.getFamily(_root.name) === FontAwesome.fonts.brands.family
+		font.family: FontAwesome.fonts.brands.family
+		font.weight: FontAwesome.fonts.brands.weight
+		text: {
+			if (FontAwesome.getFamily(_root.name) !== FontAwesome.fonts.brands.family) {
+				return "";
+			}
+			return FontAwesome.getText(name);
+		}
+		color: _root.color
+		styleColor: _root.styleColor
+		style: _root.style
 	}
 }

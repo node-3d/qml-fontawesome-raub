@@ -2,16 +2,19 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 Rectangle {
-	id: _awesomeHelper
+	id: _root
 	anchors.fill: parent
 	z: 999
 	color: 'black'
 	
-	Component.onCompleted: {
-		FontAwesome.list.forEach(name => {
-			iconList.append({ name });
-		});
+	property var filtered: {
+		const text = _filterInput.text;
+		if (text.length < 2) {
+			return FontAwesome.list;
+		}
+		return FontAwesome.list.filter(x => x.includes(text));
 	}
+	
 	ColumnLayout {
 		anchors.fill: parent
 		anchors.margins: 15
@@ -43,12 +46,6 @@ Rectangle {
 					text: ''
 					font.pixelSize: 18
 					color: 'black'
-					onTextChanged: {
-						iconList.clear();
-						FontAwesome.list.filter(x => x.includes(text)).forEach(name => {
-							iconList.append({ name });
-						});
-					}
 				}
 			}
 		}
@@ -57,19 +54,21 @@ Rectangle {
 			Layout.fillWidth: true
 			Layout.fillHeight: true
 			
+			ScrollBar.horizontal.policy: ScrollBar.AlwaysOff
+			ScrollBar.vertical.policy: ScrollBar.AlwaysOn
+			
 			GridLayout {
 				width: parent.width
 				columnSpacing: 6
 				rowSpacing: 6
-				columns: Math.floor((_awesomeHelper.width - 30 - 6) / (32 + 6))
+				columns: Math.floor((_root.width - 30 - 6) / (32 + 6))
 				Repeater {
-					id: subbookView
-
-					model: ListModel {
-						id: iconList
-					}
-
+					model: _root.filtered
+					
 					delegate: Rectangle {
+						id: _item
+						required property string modelData
+						
 						width: 32
 						height: 32
 						color: "#333"
@@ -79,12 +78,12 @@ Rectangle {
 							id: mouse
 							anchors.fill: parent
 							onPressed: {
-								console.log(model.name)
+								console.log(_item.modelData)
 							}
 						}
 						
 						IconAwesome {
-							name: model.name
+							name: _item.modelData
 							size: 20
 							anchors.centerIn: parent
 							color: '#EEDDFF'
